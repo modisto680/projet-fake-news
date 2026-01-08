@@ -5,9 +5,14 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 # === Définition du chemin racine du projet ===
-BASE_DIR = Path(r"C:\Users\boiss\Desktop\facts_check")
+#BASE_DIR = Path(r"C:\Users\boiss\Desktop\facts_check")
 
 # === Chargement des variables d'environnement ===
+#ENV_PATH = BASE_DIR / ".env"
+#load_dotenv(dotenv_path=ENV_PATH)
+
+BASE_DIR = Path(__file__).resolve().parent
+token_path = BASE_DIR / "token.json"
 ENV_PATH = BASE_DIR / ".env"
 load_dotenv(dotenv_path=ENV_PATH)
 

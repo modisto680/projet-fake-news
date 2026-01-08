@@ -1,0 +1,20 @@
+mongo:
+  db: "thumalien"
+  raw_collection: "posts"
+  processed_collection: "posts_processed"
+
+preprocess:
+  min_text_len: 3
+
+vectorization:
+  input_collection: "posts_processed"
+  output_collection: "posts_clustered"
+  text_field: "text_clean"
+  model_name: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  batch_size: 64
+  max_posts: null   # ou un nombre (ex: 5000) pour tester
+
+clustering:
+  n_clusters: 10
+  random_state: 42
+  store_embedding: false   # true si tu veux stocker le vecteur complet en Mongo

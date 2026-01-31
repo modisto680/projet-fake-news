@@ -18,3 +18,22 @@ clustering:
   n_clusters: 10
   random_state: 42
   store_embedding: false   # true si tu veux stocker le vecteur complet en Mongo
+
+tfidf:
+  input_collection: "posts_processed"
+  output_collection: "posts_tfidf"
+  text_field: "text_clean"
+
+  # TF-IDF params
+  min_df: 2
+  max_df: 0.95
+  ngram_range: [1, 2]
+  max_features: 50000
+
+  # Option: réduction de dimension pour stockage + modèle IA
+  use_svd: true
+  svd_components: 100
+  random_state: 42
+
+  # Limite de posts pour tester (null = tous)
+  max_posts: null

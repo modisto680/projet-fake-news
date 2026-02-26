@@ -1,0 +1,37 @@
+mongo:
+  # DB Mongo (peut être surchargée via variable d'environnement MONGO_DB)
+  db: "thumalien"
+
+  # Collections RAW (issues de la collecte)
+  raw_collections:
+    - timeline
+    - feed_discover
+    - feed_trending
+    - feed_hot_topics
+    - feed_popular
+
+  # Collection après nettoyage NLP
+  processed_collection: "cleaned_posts"
+
+preprocess:
+  min_text_len: 3
+
+tfidf:
+  # Lit depuis posts_processed, écrit dans vectorized_posts
+  input_collection: "posts_processed"
+  output_collection: "vectorized_posts"
+  text_field: "text_clean"
+
+  # TF-IDF params
+  min_df: 2
+  max_df: 0.95
+  ngram_range: [1, 2]
+  max_features: 50000
+
+  # Réduction de dimension (utile pour stocker des vecteurs plus petits)
+  use_svd: true
+  svd_components: 100
+  random_state: 42
+
+  # Limite de posts pour tester (null = tous)
+  max_posts: null

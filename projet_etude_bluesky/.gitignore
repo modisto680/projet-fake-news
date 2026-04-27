@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+
+# Airflow
+logs/
+plugins/__pycache__/
+
+# Kedro
+kedro/**/.ipynb_checkpoints/
+kedro/**/__pycache__/
+kedro/**/data/
+
+# Secrets
+.env
+scripts/token.json
+
+# Data artifacts
+data/processed/
+data/raw/*.json

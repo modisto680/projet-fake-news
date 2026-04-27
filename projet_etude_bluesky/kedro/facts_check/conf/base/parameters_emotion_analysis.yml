@@ -1,0 +1,24 @@
+# This is a boilerplate parameters config generated for pipeline 'emotion_analysis'
+# using Kedro 1.1.1.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/1.1.1/configuration/parameters.html
+
+emotion:
+  input_collection: "cleaned_posts"
+  text_field: "text_clean"
+
+  output_collection: "emotion_clusters_vader"
+
+  max_posts: null
+
+  vader_fields:
+    - neg
+    - neu
+    - pos
+    - compound
+
+  kmeans:
+    n_clusters: 8
+    random_state: 42
+    n_init: 10

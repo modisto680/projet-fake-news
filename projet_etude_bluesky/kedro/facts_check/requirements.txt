@@ -1,0 +1,10 @@
+# Dépendances minimales pour exécuter le pipeline Kedro (production)
+kedro==1.1.1
+pandas
+numpy
+pymongo
+python-dotenv
+scikit-learn
+joblib
+kedro-datasets
+vaderSentiment==3.3.2

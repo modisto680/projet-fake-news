@@ -1,0 +1,9 @@
+kedro
+kedro-datasets
+pandas
+numpy
+scikit-learn
+joblib
+pymongo
+python-dotenv
+vaderSentiment

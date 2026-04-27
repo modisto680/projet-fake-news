@@ -1,0 +1,62 @@
+# Data Catalog — projet_etude_bluesky
+#
+# Documentation: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+# ─── TF-IDF pipeline outputs ───────────────────────────────────────────────
+
+posts_tfidf_pkl:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/07_model_output/posts_tfidf.pkl
+  backend: pickle
+
+tfidf_artefacts:
+  type: kedro.io.MemoryDataset
+
+# ─── Fake news model ───────────────────────────────────────────────────────
+
+fake_news_raw:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/Fake.csv
+  load_args:
+    encoding: utf-8
+    engine: python
+    on_bad_lines: skip
+
+true_news_raw:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/True.csv
+  load_args:
+    encoding: utf-8
+    engine: python
+    on_bad_lines: skip
+
+training_data:
+  type: kedro.io.MemoryDataset
+
+fake_news_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/fake_news_model.pkl
+  backend: pickle
+
+fake_news_metrics:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/fake_news_metrics.json
+
+# ─── Credibility scoring ───────────────────────────────────────────────────
+
+# DataFrame intermédiaire : posts chargés depuis cleaned_posts (en mémoire)
+cleaned_posts_for_scoring:
+  type: kedro.io.MemoryDataset
+
+# DataFrame enrichi avec is_fake, fake_proba, credibility_score (en mémoire)
+scored_posts_df:
+  type: kedro.io.MemoryDataset
+
+# Nombre de documents écrits dans MongoDB scored_posts (en mémoire)
+n_scored_posts:
+  type: kedro.io.MemoryDataset
+
+# ─── Misc ──────────────────────────────────────────────────────────────────
+
+hello_message:
+  type: kedro.io.MemoryDataset
